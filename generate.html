@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate QR Codes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h2>Generate Bulk QR Codes</h2>
+
+<label for="amount">Number of QR codes:</label>
+<select id="amount">
+    <option value="1">1</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+	<option value="20">30</option>
+	<option value="20">50</option>
+</select>
+
+<button id="generateBtn">Generate</button>
+</div>
+<div id="qrContainer"></div>
+
+<script type="module" src="firebase-config.js"></script>
+<script src="qrcode.min.js"></script>
+<script type="module" src="generate.js"></script>
+
+</body>
+</html>
