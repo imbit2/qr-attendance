@@ -66,3 +66,10 @@ textarea:focus {
   outline: none;
   border-color: #3498db;
 }
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22mm, 1fr));
+  gap: 6mm;
+  justify-items: center;
+  margin-top: 20px;
+}
