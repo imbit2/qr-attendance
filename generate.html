@@ -14,33 +14,43 @@
   <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  <!-- Firebase v12 (MUST match your generate.js) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+    import { firebaseConfig } from "./firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    window.db = getFirestore(app);
+  </script>
 
 </head>
 
 <body>
+
 <div class="container">
   <h2>Generate Bulk QR Codes</h2>
-    <label class="input-label">Select Quantity:</label>
-    <select id="qrCount" class="input-field">
-      <option value="">Select</option>
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-      <option value="50">50</option>
-    </select>
 
-    <br>
+  <label class="input-label">Select Quantity:</label>
+  <select id="qrCount" class="input-field">
+    <option value="">Select</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+  </select>
 
-    <button onclick="generateBulk()">Generate QR</button>
-    <button onclick="exportPNG()">Export PNG</button>
-    <button onclick="exportPDF()">Export PDF</button>
+  <br>
 
-    <div id="qrGrid" class="qr-grid"></div>
-  </div>
-<script src="generate.js"></script>
+  <button onclick="generateBulk()">Generate QR</button>
+  <button onclick="exportPNG()">Export PNG</button>
+  <button onclick="exportPDF()">Export PDF</button>
+
+  <div id="qrGrid" class="qr-grid"></div>
+</div>
+
+<!-- generate.js MUST be module -->
+<script type="module" src="generate.js"></script>
+
 </body>
 </html>
-
