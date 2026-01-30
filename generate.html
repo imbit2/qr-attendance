@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Generate QR Codes</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Generate Bulk QR</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
 </head>
+
 <body>
-<div class="container">
-<h2>Generate Bulk QR Codes</h2>
 
-<label for="amount">Number of QR codes:</label>
-<select id="amount">
-    <option value="1">1</option>
-    <option value="5">5</option>
-    <option value="10">10</option>
-    <option value="20">20</option>
-	<option value="20">30</option>
-	<option value="20">50</option>
-</select>
+  <h2>Generate Bulk QR Codes</h2>
 
-<button id="generateBtn">Generate</button>
-<div id="qrContainer" class="qr-grid"></div>
+  <div class="container">
+    <label class="input-label">Select Quantity:</label>
+    <select id="qrCount" class="input-field">
+      <option value="">Select</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
 
-<script type="module" src="firebase-config.js"></script>
-<script src="qrcode.min.js"></script>
-<script type="module" src="generate.js"></script>
-</div>
+    <br>
+
+    <button onclick="generateBulk()">Generate QR</button>
+    <button onclick="exportPNG()">Export PNG</button>
+    <button onclick="exportPDF()">Export PDF</button>
+
+    <div id="qrGrid" class="qr-grid"></div>
+  </div>
+<script src="generate.js"></script>
 </body>
 </html>
